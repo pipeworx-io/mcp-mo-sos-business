@@ -1,0 +1,33 @@
+{
+  "name": "@pipeworx/mcp-mo-sos-business",
+  "version": "0.1.0",
+  "description": "mo-sos-business -- the Missouri Secretary of State business-entity register, searched live per request (fleet #4484). Entity-level data only: no individuals' names (the registered agent is left out), no bulk copy.",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./tools.json": "./tools.json",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "mcp-mo-sos-business": "bin/cli.js"
+  },
+  "files": ["bin/", "lib/", "tools.json", "server.json"],
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": ["mcp", "mcp-server", "model-context-protocol", "pipeworx", "mo-sos-business"],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pipeworx-io/mcp-mo-sos-business.git"
+  },
+  "mcpName": "io.github.pipeworx-io/mo-sos-business",
+  "pipeworx": {
+    "mode": "gateway",
+    "slug": "mo-sos-business",
+    "gatewaySlug": "mo-sos-business",
+    "sourceHash": "v1-6a182f903d227adc7be8fc55cb7d93458f1a1a151da011d9dd3e1f18c7d4b6a9",
+    "sourceCommit": "afcaf44429ea5fe1396ff1733e1b8651aeefcde8"
+  }
+}

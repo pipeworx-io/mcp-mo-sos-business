@@ -1,0 +1,42 @@
+[
+  {
+    "name": "mo_search_businesses",
+    "description": "Search the Missouri Secretary of State business-entity register by the start of an entity's name. Returns each entity's file_number (its charter number), name, entity type, locale (domestic = formed in Missouri, foreign = formed elsewhere and registered in Missouri), status and creation date. Tolerant of case, punctuation, \"&\" vs \"and\" and the legal-form spelling (Inc / Incorporated, LLC / L.L.C.): each row carries match = exact | legal_form_variant | name_prefix, ranked in that order, and hits counts only the exact and legal_form_variant rows. Fictitious-name registrations are included and marked name_kind fictitious; they are not companies. The register returns the first 20 rows of a longer list, so total_in_register says how many matched in all. Entity-level only: no individuals' names (registered agents are not returned). Includes inactive entities unless active_only is true. Pass a row's file_number to mo_get_business for detail.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Start of the entity name, e.g. \"EvlarSoft\"."
+        },
+        "active_only": {
+          "type": "boolean",
+          "description": "Only entities in an active status. Default false (all statuses)."
+        },
+        "limit": {
+          "type": "number",
+          "description": "Maximum rows (1-20, default 20)."
+        }
+      },
+      "required": [
+        "name"
+      ]
+    }
+  },
+  {
+    "name": "mo_get_business",
+    "description": "One Missouri Secretary of State business entity by its charter number (file_number from mo_search_businesses, e.g. \"LC014419805\"): name, entity type, locale (domestic or foreign), status and creation date. Entity-level only: the registered agent is not returned. found is false only when the register answered and holds no such charter number.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "entity_number": {
+          "type": "string",
+          "description": "Missouri charter number, e.g. \"LC014419805\"."
+        }
+      },
+      "required": [
+        "entity_number"
+      ]
+    }
+  }
+]
